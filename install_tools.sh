@@ -7,7 +7,7 @@ sudo apt update
 echo
 echo 'Installing packages...'
 
-sudo apt -y install vim git cppcheck vim build-essential aspell valgrind
+sudo apt -y install vim git cppcheck vim build-essential clang-format colordiff htop
 
 echo
 echo 'Setting up git...'
@@ -23,7 +23,7 @@ git config --global core.editor vim
 
 echo
 echo 'Setting up vimrc...'
-mv vimrc ~/.vimrc
+cp vimrc ~/.vimrc
 
 echo
 echo 'Installing Vundle...'
