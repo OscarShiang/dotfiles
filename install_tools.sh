@@ -24,3 +24,7 @@ git config --global core.editor vim
 echo
 echo 'Setting up vimrc...'
 cp vimrc ~/.vimrc
+
+echo
+echo 'Setting up mutt...'
+cp -r mutt ~/.mutt

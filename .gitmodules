@@ -1,0 +1,3 @@
+[submodule "mutt"]
+	path = mutt
+	url = https://github.com/OscarShiang/mutt-office365.git
