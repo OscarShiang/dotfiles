@@ -24,11 +24,3 @@ git config --global core.editor vim
 echo
 echo 'Setting up vimrc...'
 cp vimrc ~/.vimrc
-
-echo
-echo 'Installing Vundle...'
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-echo 
-echo 'Installing packages from Vundle...'
-vim +PluginInstall +qall
