@@ -11,15 +11,7 @@ sudo apt -y install vim git cppcheck vim build-essential clang-format colordiff 
 
 echo
 echo 'Setting up git...'
-read -p 'Enter your name: ' username
-read -p 'Enter your email: ' useremail
-
-git config --global user.name "${username}"
-git config --global user.email "${useremail}"
-
-echo
-echo 'Setting up default editor as vim'
-git config --global core.editor vim
+cp gitconfig ~/.gitconfig
 
 echo
 echo 'Setting up vimrc...'
