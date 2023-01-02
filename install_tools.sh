@@ -28,3 +28,7 @@ cp vimrc ~/.vimrc
 echo
 echo 'Setting up mutt...'
 cp -r mutt ~/.mutt
+
+echo
+echo 'Setting up tmux'
+cp tmux.conf ~/.tmux.conf
