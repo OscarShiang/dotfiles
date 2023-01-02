@@ -1,26 +1,48 @@
 #!/bin/bash
 
-echo 'Update the packages...'
+RED="\e[1;31m"
+GREEN="\e[1;32m"
+BLUE="\e[1;34m"
+NORMAL="\e[0m"
 
-sudo apt update
+function check_result() {
+    if [ "$?" == "0" ]; then
+	echo -e "${GREEN}Done${NORMAL}"
+    else
+	echo -e "${RED}Failed${NORMAL}"
+	echo -e "$1"
+	exit -1
+    fi
+}
 
-echo
-echo 'Installing packages...'
+printf 'Installing packages ... \t'
 
-sudo apt -y install vim git cppcheck vim build-essential clang-format colordiff htop
+if [ `uname -s` == "Linux" ]; then
+    ERR=$(sudo apt update 2>&1 >/dev/null)
+    ERR=$(sudo apt -y install vim git cppcheck build-essential clang-format colordiff htop mutt tmux 2>&1 >/dev/null)
+elif [ `uname -s` == "Darwin" ]; then
+    ERR=$(brew update 2>&1 >/dev/null)
+    ERR=$(brew install clang-format tmux mutt htop 2>&1 >/dev/null)
+fi
 
-echo
-echo 'Setting up git...'
-cp gitconfig ~/.gitconfig
+check_result $ERR
 
-echo
-echo 'Setting up vimrc...'
-cp vimrc ~/.vimrc
+printf 'Setting up git ... \t\t'
+ERR=$(cp gitconfig ${HOME}/.gitconfig 2>&1 >/dev/null)
 
-echo
-echo 'Setting up mutt...'
-cp -r mutt ~/.mutt
+check_result $ERR
 
-echo
-echo 'Setting up tmux'
-cp tmux.conf ~/.tmux.conf
+printf 'Setting up vimrc ... \t\t'
+ERR=$(cp vimrc ${HOME}/.vimrc 2>&1 >/dev/null)
+
+check_result $ERR
+
+printf 'Setting up mutt ... \t\t'
+ERR=$(cp -r mutt ${HOME}/.mutt 2>&1 >/dev/null)
+
+check_result $ERR
+
+printf 'Setting up tmux ... \t\t'
+ERR=$(cp tmux.conf ${HOME}/.tmux.conf 2>&1 >/dev/null)
+
+check_result $ERR
