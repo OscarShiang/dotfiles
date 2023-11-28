@@ -16,3 +16,4 @@ inoremap ' ''<Esc>i
 inoremap {<CR> {<CR>}<Esc>ko
 
 set backspace=indent,eol,start
+set tags+=tags;/
