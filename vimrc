@@ -8,6 +8,7 @@ set showmatch
 set cursorline
 set shiftwidth=4
 set expandtab
+set cscopetag
 
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
