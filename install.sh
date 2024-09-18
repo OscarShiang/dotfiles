@@ -6,7 +6,7 @@ BLUE="\e[1;34m"
 NORMAL="\e[0m"
 
 function check_result() {
-    ERR="$@"
+    ERR=$($@)
     if [ "$?" == "0" ]; then
 	printf "${GREEN}Done${NORMAL}\n"
     else
@@ -27,13 +27,13 @@ elif [ `uname -s` == "Darwin" ]; then
 fi
 
 printf 'Setting up git ... \t\t'
-check_result "cp gitconfig ${HOME}/.gitconfig 2>&1 >/dev/null"
+check_result "cp gitconfig ${HOME}/.gitconfig"
 
 printf 'Setting up vimrc ... \t\t'
-check_result "cp vimrc ${HOME}/.vimrc 2>&1 >/dev/null"
+check_result "cp vimrc ${HOME}/.vimrc"
 
 printf 'Setting up mutt ... \t\t'
-check_result "cp -r mutt ${HOME}/.mutt 2>&1 >/dev/null"
+check_result "cp -r mutt ${HOME}/.mutt"
 
 printf 'Setting up tmux ... \t\t'
-check_result "cp tmux.conf ${HOME}/.tmux.conf 2>&1 >/dev/null"
+check_result "cp tmux.conf ${HOME}/.tmux.conf"
