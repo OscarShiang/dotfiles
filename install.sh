@@ -20,7 +20,7 @@ printf 'Installing packages ... \t'
 
 if [ `uname -s` == "Linux" ]; then
     sudo apt update 2>&1 >/dev/null
-    check_result "sudo apt -y install vim git cppcheck build-essential clang-format colordiff htop mutt tmux 2>&1 >/dev/null"
+    check_result "sudo apt -y install vim git cppcheck build-essential clang-format colordiff htop mutt tmux cscope 2>&1 >/dev/null"
 elif [ `uname -s` == "Darwin" ]; then
     brew update 2>&1 >/dev/null
     check_result "brew install clang-format tmux mutt htop 2>&1 >/dev/null"
@@ -37,3 +37,6 @@ check_result "cp -r mutt ${HOME}/.mutt"
 
 printf 'Setting up tmux ... \t\t'
 check_result "cp tmux.conf ${HOME}/.tmux.conf"
+
+printf 'Setting up cscope ... \t\t'
+check_result "mkdir -p ${HOME}/.vim/plugin/ && cp cscope_maps.vim ${HOME}/.vim/plugin/"
