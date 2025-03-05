@@ -38,5 +38,7 @@ check_result "cp -r mutt ${HOME}/.mutt"
 printf 'Setting up tmux ... \t\t'
 check_result "cp tmux.conf ${HOME}/.tmux.conf"
 
-printf 'Setting up cscope ... \t\t'
-check_result "mkdir -p ${HOME}/.vim/plugin/ && cp cscope_maps.vim ${HOME}/.vim/plugin/"
+printf 'Setting up vim plugins ... \t\t'
+check_result "mkdir -p ${HOME}/.vim/plugin/ && \
+                 wget https://cscope.sourceforge.net/cscope_maps.vim -P ${HOME}/.vim/plugin && \
+                 wget https://raw.githubusercontent.com/vim-scripts/autoload_cscope.vim/refs/heads/master/plugin/autoload_cscope.vim -P ${HOME}/.vim/plugin"
